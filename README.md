@@ -6,7 +6,7 @@ Treetrack runs on Python 3. To run the source code, install the dependencies wit
 pip install -r requirements.txt
 ```
 
-> **Note:** This is only needed to run the `.py` source files. The packaged executable bundles everything and needs no installation.
+> **Note:** This is only needed to run the `.py` source files. The packaged executable bundles everything.
 
 ### Python packages
 
