@@ -2,45 +2,40 @@
   <img src="assets/treetrack-logo-light.svg" alt="Treetrack" width="500">
 </p>
 
-## Requirements
+<p align="center">
+  A pipeline for segmenting and visualizing brain vasculature from MRI scans.
+</p>
 
-Treetrack runs on Python 3. To run the source code, install the dependencies with:
+Treetrack produces 3D vessel segmentations from brain scans. There are two ways to work with it:
 
-```bash
-pip install -r requirements.txt
-```
-
-> **Note:** This is only needed to run the `.py` source files. The packaged executable bundles everything.
-
-### Python packages
-
-| Package | Purpose |
-| --- | --- |
-| `numpy`, `scipy`, `pandas` | Core scientific computing stack |
-| `itk` | Medical image I/O and processing |
-| `scikit-image` | Morphological operations (imported as `skimage.morphology`) |
-| `vtk` | 3D visualization |
-| `matplotlib` | Plotting |
-| `numba` | JIT compilation for the fast graph / region-grow routines |
-| `xlsxwriter` | Excel output engine for pandas (`pd.ExcelWriter(..., engine='xlsxwriter')`) — not imported directly, but required at runtime when saving results |
-
-### Standard library
-
-These ship with Python and need no installation: `os`, `pickle`, `time`, `collections`, `heapq`, `tkinter`.
-
-`tkinter` (used for the file-open dialog) is included with Python on Windows and macOS. On Linux, if it's missing, install it via your system package manager:
-
-```bash
-sudo apt install python3-tk
-```
-
-A standalone viewer for inspecting a brain scan and its segmented vessels in 3D. You select a scan file, and the viewer shows the scan slices together with any vessel segmentation that was previously created and saved in the main Treetrack tool.
-
-This manual covers the executable build — you do **not** need Python or any packages installed to run it.
+- **vWell Viewer** — a standalone app for inspecting a scan and its saved vessel segmentation in 3D. No Python required.
+- **Full program (from source)** — the complete Treetrack tool for creating and editing segmentations, run from the Python source.
 
 ---
 
-## 1. What you need before you start
+# vWell Viewer (Standalone App)
+
+A standalone viewer for inspecting a brain scan and its segmented vessels in 3D. You select a scan file, and the viewer shows the scan slices together with any vessel segmentation that was previously created and saved in the main Treetrack tool. The viewer only *displays* segmentations — it does not create or edit them.
+
+You do **not** need Python or any packages installed to run it.
+
+## Installing the viewer
+
+### Windows
+
+1. Download `Treetrack_Setup.exe`.
+2. Double-click it and follow the prompts to choose an install location and create shortcuts.
+3. Launch from the **Start Menu** or **desktop shortcut**.
+
+### macOS
+
+1. Download and double-click the `.dmg` to mount it.
+2. Drag **vWell Viewer** into your **Applications** folder, then eject the `.dmg`.
+3. Launch from **Applications** or **Launchpad**.
+
+> **First launch:** because this is unsigned research software, Windows and macOS show a security warning the first time you run it. This is expected and only needs clearing once — see [Troubleshooting &amp; Security](#troubleshooting--security).
+
+## What you need before you start
 
 The viewer works with three things, all living **in the same folder**:
 
@@ -64,26 +59,22 @@ Test Brain/
         ...
 ```
 
-> The vessels you see come from a segmentation made earlier in the main Treetrack program. The viewer only *displays* segmentations — it does not create or edit them.
+> The vessels you see come from a segmentation made earlier in the main Treetrack program.
 
----
+## Loading a scan
 
-## 2. Loading a scan
-
-1. **Launch the executable** (double-click it).
-2. A **file-selection dialog titled "Select Input Image"** opens. Depending on the build, a console/terminal window may also appear showing progress messages — leave it open while you work.
+1. **Launch the viewer** (see [Installing the viewer](#installing-the-viewer) above).
+2. A **file-selection dialog titled "Select Input Image"** opens. A console/terminal window may also appear showing progress messages — leave it open while you work.
 3. **Navigate to your scan folder** and select the `.nii` (or `.nii.gz`) file, then click **Open**.
 4. The viewer prepares the vWell data:
-   - **First time on a scan:** it computes the vWell structure from scratch. This can take a moment; progress prints in the console. When it finishes it saves a `..._DATA_RF2` folder so future loads are fast. Don't close the window during this step.
+   - **First time on a scan:** it computes the vWell structure from scratch. This can take a while; progress prints in the console. When it finishes it saves a `..._DATA_RF2` folder so future loads are fast. Don't close the window during this step.
    - **After that:** it reuses the cached `..._DATA_RF2` folder and loads quickly.
 5. The viewer then looks for the saved segmentation (`..._LOPRF2.npz`) in the scan's folder:
    - **Found** → the 3D vessels load automatically and the console prints `Loaded existing segmentation.`
    - **Not found** → the console prints `No saved segmentation found.` and you'll see only the scan slices (no vessels).
 6. The **3D viewer window** opens.
 
----
-
-## 3. Controls
+## Controls
 
 A summary of these controls is shown on screen inside the viewer. Press **?** to hide or show it.
 
@@ -110,15 +101,49 @@ A summary of these controls is shown on screen inside the viewer. Press **?** to
 | Right-drag (on the plane) | Adjust brightness / contrast |
 | Scroll wheel | Zoom |
 
+## Notes
+
+- Keep the console/terminal window open while using the viewer; closing it closes the program.
+- This build uses a fixed resampling factor of **2** (hence the `RF2` / `_LOPRF2` naming).
+- Input scans should be NIfTI (`.nii` or `.nii.gz`).
+
 ---
 
-## 4. Troubleshooting
+# Troubleshooting &amp; Security
+
+## Getting past the first-launch security warning
+
+The viewer is unsigned research software, so the operating system warns you the first time you run it. This does **not** mean the app is unsafe — it only means the publisher isn't registered with Microsoft or Apple. You clear it once.
+
+### Windows (SmartScreen)
+
+1. When you run `Treetrack_Setup.exe`, a blue **"Windows protected your PC"** dialog appears.
+2. Click the **More info** link (small text below the message).
+3. Click the **Run anyway** button that appears.
+4. If prompted by **User Account Control**, click **Yes**.
+
+**Antivirus false positives:** self-contained executables are sometimes flagged incorrectly. If the installer or app disappears or won't run, open **Windows Security → Virus & threat protection → Protection history**, find the quarantined item, and choose **Restore** (or add an **exclusion** for the install folder). On managed machines, IT may need to approve it.
+
+### macOS (Gatekeeper)
+
+1. Double-click the app once. You'll get a *"developer cannot be verified"* message — click **Done** or **Cancel** to dismiss it. (This registers the attempt.)
+2. Open **System Settings** → **Privacy & Security**, then scroll down to the **Security** section.
+3. Find the line noting that the app *was blocked* and click **Open Anyway**. (This button only appears for about an hour after you tried to open the app; if it's gone, double-click the app again.)
+4. Confirm with **Open Anyway** in the popup, then enter your password or Touch ID.
+
+On older macOS you can instead **Control-click** (or right-click) the app in Finder and choose **Open**. If macOS says the app *"is damaged,"* that's the download quarantine flag — remove it in Terminal:
+
+```bash
+xattr -dr com.apple.quarantine "/Applications/vWell Viewer.app"
+```
+
+## Viewer troubleshooting
 
 **No vessels appear.**
 The `..._LOPRF2.npz` segmentation file isn't in the scan's folder, or its name doesn't match the scan's base name. Confirm the file is present and named correctly (e.g. `ExtractedCOW.nii` → `ExtractedCOW_LOPRF2.npz`). If the segmentation was never saved in the main tool, there's nothing to display.
 
-**The first load takes a moment.**
-That's expected the first time — it's computing the vWell structure. It caches the result in `..._DATA_RF2`, so subsequent loads of the same scan are faster. To force a fresh recompute, delete that folder.
+**The first load is very slow.**
+That's expected the first time — it's computing the vWell structure. It caches the result in `..._DATA_RF2`, so subsequent loads of the same scan are much faster. To force a fresh recompute, delete that folder.
 
 **The dialog flashes and closes, or nothing opens.**
 Check the console/terminal window for an error message. The most common causes are selecting a file that isn't a readable NIfTI image, or a missing/corrupt companion file.
@@ -127,12 +152,53 @@ Check the console/terminal window for an error message. The most common causes a
 Right-drag while hovering over the slice plane to adjust brightness/contrast, or use Left/Right to switch between the input, mean, and variance images.
 
 **Vessels are hidden.**
-Press **V** to toggle them back on, and **o** to change opacity to 100%.
+Press **V** to toggle them back on, and **o** to bump opacity to 100%.
 
 ---
 
-## 5. Notes
+# Running from Source (Full Program)
 
-- Keep the console/terminal window open while using the viewer; closing it closes the program.
-- This build uses a fixed resampling factor of **2** (hence the `RF2` / `_LOPRF2` naming).
-- Input scans should be NIfTI (`.nii` or `.nii.gz`).
+The full Treetrack program — including creating and editing segmentations — runs from the Python source. `tt_Main.py` is the full segmentation editor; `tt_Viewer.py` is the read-only viewer (the same tool packaged as the standalone app above).
+
+## Installing the libraries
+
+Treetrack runs on Python 3. Install the dependencies with:
+
+```bash
+pip install -r requirements.txt
+```
+
+> **Note:** This is only needed to run the `.py` source files. The packaged viewer bundles everything.
+
+### Python packages
+
+| Package | Purpose |
+| --- | --- |
+| `numpy`, `scipy`, `pandas` | Core scientific computing stack |
+| `itk` | Medical image I/O and processing |
+| `scikit-image` | Morphological operations (imported as `skimage.morphology`) |
+| `vtk` | 3D visualization |
+| `matplotlib` | Plotting |
+| `numba` | JIT compilation for the fast graph / region-grow routines |
+| `xlsxwriter` | Excel output engine for pandas (`pd.ExcelWriter(..., engine='xlsxwriter')`) — not imported directly, but required at runtime when saving results |
+
+### Standard library
+
+These ship with Python and need no installation: `os`, `pickle`, `time`, `collections`, `heapq`, `tkinter`.
+
+`tkinter` (used for the file-open dialog) is included with Python on Windows and macOS. On Linux, if it's missing, install it via your system package manager:
+
+```bash
+sudo apt install python3-tk
+```
+
+## Running the program
+
+From the project root, with your dependencies installed:
+
+```bash
+python tt_Main.py       # full segmentation editor
+python tt_Viewer.py     # read-only viewer
+```
+
+Both open the same **"Select Input Image"** file dialog described under [Loading a scan](#loading-a-scan). The editor adds segmentation creation and editing on top of the viewer's display features.
