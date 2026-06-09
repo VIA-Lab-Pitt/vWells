@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/treetrack-logo-light.svg" alt="Treetrack" width="500">
+</p>
+
 ## Requirements
 
 Treetrack runs on Python 3. To run the source code, install the dependencies with:
