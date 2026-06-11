@@ -6,7 +6,7 @@
   A pipeline for segmenting and visualizing brain vasculature from MRI scans.
 </p>
 
-Treetrack is a set of software for semi-automated binary segmentation in 3D medical images using "variance wells" (vWells). We combine statistical shortest path and region-growing algorithms with 3D visualization overlaid on the source image to enable efficient user-guided segmentation, validation, and analysis. There is a simplified version in 2d available at the following page: https://github.com/SatyajBhargava/2024-2D-vWell-Algorithm- 
+Treetrack is a set of software for semi-automated binary segmentation of 3D medical images using "variance wells" (vWells). We combine statistical shortest path and region-growing algorithms with 3D visualization overlaid on the source image to enable efficient user-guided segmentation, validation, and analysis. There is a simplified version in 2d available at the following page: https://github.com/SatyajBhargava/2024-2D-vWell-Algorithm- 
 
 There are two ways to use Treetrack:
 
