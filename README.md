@@ -10,7 +10,7 @@ Treetrack is a set of software for semi-automated binary segmentation of 3D medi
 
 There are two ways to use Treetrack:
 
-- vWell Viewer (installer located in releases) — a standalone app for inspecting a scan and its saved vessel segmentation in 3D. No Python required. This can be found in releases.
+- vWell Viewer (installer located in releases) — a standalone app for inspecting a scan and its saved vessel segmentation in 3D. No Python required.
 - Full program (from source) — the complete Treetrack tool for creating and editing segmentations, run from the Python source.
 
 ---
