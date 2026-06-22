@@ -10,7 +10,7 @@ Treetrack is a set of software for semi-automated binary segmentation of 3D medi
 
 There are two ways to use Treetrack:
 
-- vWell Viewer (installer located in releases) — a standalone app for inspecting a scan and its saved vessel segmentation in 3D. No Python required.
+- vWell Viewer (installer located in releases) — a standalone app for inspecting a scan and its saved vessel segmentation in 3D. No Python required. This can be found in releases.
 - Full program (from source) — the complete Treetrack tool for creating and editing segmentations, run from the Python source.
 
 ---
@@ -68,7 +68,7 @@ Test Brain/
 1. **Launch the viewer** (see [Installing the viewer](#installing-the-viewer) above).
 2. A **file-selection dialog titled "Select Input Image"** opens. A console/terminal window may also appear showing progress messages — leave it open while you work.
 3. **Navigate to your scan folder** and select the `.nii` (or `.nii.gz`) file, then click **Open**.
-4. The viewer loads/prepares the vWell data. This may take a moment.
+4. The viewer loads/prepares the vWell data. This may take a moment. The first time a scan is opened, vWells are computed which may take longer than subsequent loads.
 5. The viewer then looks for the saved segmentation (`..._LOPRF2.npz`) in the scan's folder:
    - **Found** → the 3D vessels load automatically and the console prints `Loaded existing segmentation.`
    - **Not found** → the console prints `No saved segmentation found.` and you'll see only the scan slices (no vessels).
