@@ -314,8 +314,8 @@ class vWellAlgorithm:  # For managing the vWell algorithm
         print("Computing variance image...")
         start = time.perf_counter_ns()
 
-        # Use float64 to prevent overflow when squaring large voxel values
-        image = self.numpy_resampled_input_image.astype(np.float64)
+        # Floor resampled values to integers before variance
+        image = self.numpy_resampled_input_image.astype(np.uint32).astype(np.float64)
         radius = self.kernel_radius
         kernel_size = (2 * radius) + 1
         neighborhood_size = kernel_size ** 3
