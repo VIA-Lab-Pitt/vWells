@@ -17,15 +17,17 @@ There are two ways to use our software:
 
 # vWell Viewer (Standalone App)
 
-A standalone viewer for inspecting a scan and its completed segmentation in 3D. You select a scan file, and the viewer shows the scan slices together with any vessel segmentation that was previously created and saved in the main Treetrack tool. The viewer only *displays* segmentations — it does not create or edit them.
+A standalone viewer for inspecting a scan and its completed segmentation in 3D. You select a scan file, and the viewer shows the scan slices together with any vessel segmentation that was previously created and saved in the main Treetrack segmentation tool. The viewer only *displays* segmentations — it does not create or edit them.
 
 You do not need Python or any packages installed to run it.
+
+Installers for the viewer can be found in Releases.
 
 ## Installing the viewer
 
 ### Windows
 
-1. Download `Treetrack_Setup.exe`.
+1. Download `VWellViewer_Setup.exe`.
 2. Double-click it and follow the prompts to choose an install location and create shortcuts.
 3. Launch from the **Start Menu** or **desktop shortcut**.
 
