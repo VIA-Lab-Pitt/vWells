@@ -1,40 +1,20 @@
 <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg" role="img">
 <title>vWells</title>
-<desc>Logo for Treetrack brain vasculature segmentation software</desc>
+<desc>Logo for vWells: a V-shaped conical well shown in perspective, beside the vWells wordmark</desc>
 <style>
 .word { fill: #2C3E50; font-family: sans-serif; }
 @media (prefers-color-scheme: dark) {
 .word { fill: #ECEFF1; }
 }
 </style>
-<g transform="translate(200, 195)" fill="none" stroke="#9C2D43" stroke-linecap="round">
-<path d="M -3,0 C -16,8 -30,16 -38,20" stroke-width="11"/>
-<path d="M -38,20 C -47,25 -53,30 -58,33" stroke-width="6"/>
-<path d="M -38,20 C -42,28 -45,35 -47,40" stroke-width="6"/>
-<path d="M 3,0 C 16,8 30,16 38,20" stroke-width="11"/>
-<path d="M 38,20 C 47,25 53,30 58,33" stroke-width="6"/>
-<path d="M 38,20 C 42,28 45,35 47,40" stroke-width="6"/>
-<path d="M -22,-73 C -36,-75 -50,-77 -65,-78" stroke-width="9"/>
-<path d="M -65,-78 C -76,-79 -83,-81 -88,-82" stroke-width="5"/>
-<path d="M -65,-78 C -69,-86 -72,-93 -72,-98" stroke-width="5"/>
-<path d="M 22,-73 C 36,-75 50,-77 65,-78" stroke-width="9"/>
-<path d="M 65,-78 C 76,-79 83,-81 88,-82" stroke-width="5"/>
-<path d="M 65,-78 C 69,-86 72,-93 72,-98" stroke-width="5"/>
-<path d="M 0,0 C -2,-20 -2,-40 -1,-55" stroke-width="18"/>
-<path d="M -1,-55 C -15,-65 -30,-80 -42,-95" stroke-width="11"/>
-<path d="M -1,-55 C 13,-65 28,-80 40,-95" stroke-width="11"/>
-<path d="M -42,-95 C -55,-108 -65,-125 -72,-140" stroke-width="6.5"/>
-<path d="M -42,-95 C -38,-115 -32,-130 -28,-145" stroke-width="6.5"/>
-<path d="M 40,-95 C 52,-108 62,-125 70,-140" stroke-width="6.5"/>
-<path d="M 40,-95 C 36,-115 30,-130 26,-145" stroke-width="6.5"/>
-<path d="M -72,-140 C -82,-150 -87,-157 -88,-162" stroke-width="3.5"/>
-<path d="M -72,-140 C -65,-155 -60,-163 -57,-167" stroke-width="3.5"/>
-<path d="M -28,-145 C -38,-160 -42,-168 -42,-172" stroke-width="3.5"/>
-<path d="M -28,-145 C -18,-160 -14,-168 -13,-172" stroke-width="3.5"/>
-<path d="M 26,-145 C 16,-160 12,-168 11,-172" stroke-width="3.5"/>
-<path d="M 26,-145 C 36,-160 40,-168 40,-172" stroke-width="3.5"/>
-<path d="M 70,-140 C 63,-155 58,-163 55,-167" stroke-width="3.5"/>
-<path d="M 70,-140 C 80,-150 85,-157 86,-162" stroke-width="3.5"/>
+<g fill="none" stroke="#9C2D43" stroke-linecap="round" stroke-linejoin="round">
+<ellipse cx="200" cy="66" rx="58" ry="14" stroke-width="3.5"/>
+<path d="M 142,66 L 200,180" stroke-width="3.5"/>
+<path d="M 258,66 L 200,180" stroke-width="3.5"/>
+<ellipse cx="200" cy="100" rx="42" ry="10" stroke-width="3"/>
+<ellipse cx="200" cy="132" rx="26" ry="6.5" stroke-width="2.6"/>
+<ellipse cx="200" cy="158" rx="13" ry="3.5" stroke-width="2.2"/>
 </g>
+<circle cx="200" cy="180" r="5" fill="#9C2D43"/>
 <text x="330" y="145" fill="#2C3E50" font-family="sans-serif" font-size="58" font-weight="500" letter-spacing="-1">vWells</text>
 </svg>
