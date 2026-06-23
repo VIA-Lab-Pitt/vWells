@@ -1,13 +1,15 @@
+vWells (Treetrack)
+
 <p align="center">
   A pipeline for segmenting and visualizing brain vasculature from MRI scans.
 </p>
 
-Treetrack is a set of software for semi-automated binary segmentation of 3D medical images using "variance wells" (vWells). We combine statistical shortest path and region-growing algorithms with 3D visualization overlaid on the source image to enable efficient user-guided segmentation, validation, and analysis. There is a simplified version in 2d available at the following page: https://github.com/SatyajBhargava/2024-2D-vWell-Algorithm- 
+This is a set of software for semi-automated binary segmentation of 3D medical images using "variance wells" (vWells). We combine statistical shortest path and region-growing algorithms with 3D visualization overlaid on the source image to enable efficient user-guided segmentation, validation, and analysis. There is a simplified version in 2d available at the following page: https://github.com/SatyajBhargava/2024-2D-vWell-Algorithm- 
 
-There are two ways to use Treetrack:
+There are two ways to use our software:
 
 - vWell Viewer (installer located in releases) — a standalone app for inspecting a scan and its saved vessel segmentation in 3D. No Python required.
-- Full program (from source) — the complete Treetrack tool for creating and editing segmentations, run from the Python source code.
+- Full program (from source) — the complete tool for creating and editing segmentations, run from the Python source code.
 
 ---
 
@@ -113,7 +115,7 @@ The viewer is unsigned research software, so the operating system warns you the 
 
 ### Windows (SmartScreen)
 
-1. When you run `Treetrack_Setup.exe`, a blue **"Windows protected your PC"** dialog appears.
+1. When you run `VWellViewer-....-installer.exe`, a blue **"Windows protected your PC"** dialog appears.
 2. Click the **More info** link (small text below the message).
 3. Click the **Run anyway** button that appears.
 4. If prompted by **User Account Control**, click **Yes**.
@@ -151,11 +153,11 @@ Press **V** to toggle them back on, and **o** to switch between opaque and semi-
 
 # Running from Source (Full Program)
 
-The full Treetrack program — including creating and editing segmentations — runs from the Python source. `tt_Main.py` is the full segmentation editor; `tt_Viewer.py` is the read-only viewer (the same tool packaged as the standalone app above).
+The full software — including creating and editing segmentations — runs from the Python source. `tt_Main.py` is the full segmentation editor; `tt_Viewer.py` is the read-only viewer (the same tool packaged as the standalone app above).
 
 ## Installing the libraries
 
-Treetrack runs on Python 3. Install the dependencies with:
+vWells software runs on Python 3. Install the dependencies with:
 
 ```bash
 pip install -r requirements.txt
