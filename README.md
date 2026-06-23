@@ -1,4 +1,6 @@
-vWells (Treetrack)
+<p align="center">
+  <img src="assets/treetrack-logo-light.svg" alt="Treetrack" width="500">
+</p>
 
 <p align="center">
   A pipeline for segmenting and visualizing brain vasculature from MRI scans.
